@@ -22,14 +22,14 @@ class _ProgramsChooseState extends State<ProgramsChoose> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                programContainer(context, "pecs"),
-                programContainer(context, "biceps"),
-                programContainer(context, "triceps"),
-                programContainer(context, "back"),
-                programContainer(context, "shoulders"),
-                programContainer(context, "cardio"),
-                programContainer(context, "abs"),
-                programContainer(context, "legs"),
+                programContainer(context, "Pecs", "/pecs"),
+                programContainer(context, "Biceps", "/biceps"),
+                programContainer(context, "Triceps", "/triceps"),
+                programContainer(context, "Back", "/back"),
+                programContainer(context, "Shoulders", "/shoulders"),
+                programContainer(context, "Cardio", "/cardio"),
+                programContainer(context, "Abs", "/abs"),
+                programContainer(context, "Legs", "/legs"),
               ],
             ),
           ),
@@ -39,7 +39,7 @@ class _ProgramsChooseState extends State<ProgramsChoose> {
   }
 }
 
-Widget programContainer(BuildContext context, String program) {
+Widget programContainer(BuildContext context, String program, String path) {
   return Padding(
     padding: const EdgeInsets.all(50),
     child: Material(
@@ -50,7 +50,7 @@ Widget programContainer(BuildContext context, String program) {
       child: GestureDetector(
         onTap: () {
           debugPrint(program);
-          context.go("/$program");
+          context.go(path);
         },
         child: Container(
           width: 100,

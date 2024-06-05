@@ -9,56 +9,78 @@ import 'programs/shoulders.dart';
 import 'programs/cardio.dart';
 import 'programs/abs.dart';
 import 'programs/legs.dart';
+import 'exercises/benchpress.dart';
+import 'exercises/pecfly.dart';
 
-final routes = GoRouter(routes: [
-  GoRoute(
-    path: "/",
-    name: "ProgramsChoose",
-    builder: (BuildContext context, GoRouterState state) =>
-        const ProgramsChoose(),
-  ),
-  GoRoute(
-    path: "/pecs",
-    name: "PecsProgram",
-    builder: (BuildContext context, GoRouterState state) => const PecsProgram(),
-  ),
-  GoRoute(
-    path: "/biceps",
-    name: "BicepsProgram",
-    builder: (BuildContext context, GoRouterState state) =>
-        const BicepsProgram(),
-  ),
-  GoRoute(
-    path: "/triceps",
-    name: "TricepsProgram",
-    builder: (BuildContext context, GoRouterState state) =>
-        const TricepsProgram(),
-  ),
-  GoRoute(
-    path: "/back",
-    name: "BackProgram",
-    builder: (BuildContext context, GoRouterState state) => const BackProgram(),
-  ),
-  GoRoute(
-    path: "/shoulders",
-    name: "ShouldersProgram",
-    builder: (BuildContext context, GoRouterState state) =>
-        const ShouldersProgram(),
-  ),
-  GoRoute(
-    path: "/cardio",
-    name: "CardioProgram",
-    builder: (BuildContext context, GoRouterState state) =>
-        const CardioProgram(),
-  ),
-  GoRoute(
-    path: "/abs",
-    name: "AbsProgram",
-    builder: (BuildContext context, GoRouterState state) => const AbsProgram(),
-  ),
-  GoRoute(
-    path: "/legs",
-    name: "LegsProgram",
-    builder: (BuildContext context, GoRouterState state) => const LegsProgram(),
-  ),
-]);
+final routes = GoRouter(
+  initialLocation: "/",
+  routes: [
+    GoRoute(
+      
+      path: "/",
+      name: "ProgramsChoose",
+      builder: (BuildContext context, GoRouterState state) =>
+          const ProgramsChoose(),
+    ),
+    GoRoute(
+      path: "/pecs",
+      name: "PecsProgram",
+      builder: (BuildContext context, GoRouterState state) =>
+          const PecsProgram(),
+    ),
+    GoRoute(
+      path: "/biceps",
+      name: "BicepsProgram",
+      builder: (BuildContext context, GoRouterState state) =>
+          const BicepsProgram(),
+    ),
+    GoRoute(
+      path: "/triceps",
+      name: "TricepsProgram",
+      builder: (BuildContext context, GoRouterState state) =>
+          const TricepsProgram(),
+    ),
+    GoRoute(
+      path: "/back",
+      name: "BackProgram",
+      builder: (BuildContext context, GoRouterState state) =>
+          const BackProgram(),
+    ),
+    GoRoute(
+      path: "/shoulders",
+      name: "ShouldersProgram",
+      builder: (BuildContext context, GoRouterState state) =>
+          const ShouldersProgram(),
+    ),
+    GoRoute(
+      path: "/cardio",
+      name: "CardioProgram",
+      builder: (BuildContext context, GoRouterState state) =>
+          const CardioProgram(),
+    ),
+    GoRoute(
+      path: "/abs",
+      name: "AbsProgram",
+      builder: (BuildContext context, GoRouterState state) =>
+          const AbsProgram(),
+    ),
+    GoRoute(
+      path: "/legs",
+      name: "LegsProgram",
+      builder: (BuildContext context, GoRouterState state) =>
+          const LegsProgram(),
+    ),
+    GoRoute(
+      path: "/benchpress",
+      name: "BenchPress",
+      builder: (BuildContext context, GoRouterState state) =>
+          const BenchPress(),
+    ),
+    GoRoute(
+      path: "/pecfly",
+      name: "Pec Fly",
+      builder: (BuildContext context, GoRouterState state) =>
+          const PecFly(),
+    ),
+  ],
+);
