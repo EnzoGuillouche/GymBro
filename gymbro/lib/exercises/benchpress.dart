@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import '../preferences.dart';
 import '../timer.dart';
 
 class BenchPress extends StatefulWidget {
@@ -10,8 +11,6 @@ class BenchPress extends StatefulWidget {
 }
 
 class _BenchPressState extends State<BenchPress> {
-  String barPR = "3";
-  String dumbbelPR = "5";
   int barIndex = 0;
 
   void _onItemTapped(int index) {
@@ -41,12 +40,27 @@ class _BenchPressState extends State<BenchPress> {
         ),
       ),
       body: barIndex == 0 ? SingleChildScrollView(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: [
-            title("PRs:"),
-            PR(barPR, "Bar"),
-            PR(dumbbelPR, "Dumbbel"),
+        child:  Column(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  Row(
+                    children: [
+                      Column(
+                        children: [
+                          title("Working weight"),
+                          PR(benchBar, "Bar"),
+                          PR(benchDumbbell, "Dumbbell"),
+                        ],
+                      ),
+                      Column(
+                        children: [
+                          title("PRs:"),
+                          PR(benchBarPB, "Bar"),
+                          PR(benchDumbbellPB, "Dumbbell"),
+                        ],
+                      ),
+                    ],
+                  ),
             description(),
             steps(),
             benefits(),
@@ -112,8 +126,15 @@ Widget description() {
       const Padding(
         padding: EdgeInsets.all(25),
         child: Text(
-          "     The bench press is a strength training \nexercise that primarily targets the chest \nmuscles (pectoralis major), but also \nengages the triceps and shoulders. \n\n     It is performed using a barbell or \ndumbbells while lying on a bench.",
+          "     The bench press is a strength training exercise that primarily targets the chest muscles (pectoralis major), but also engages the triceps and shoulders. \n\n     It is performed using a barbell or dumbbells while lying on a bench.",
           style: TextStyle(fontSize: 18),
+        ),
+      ),
+      Padding(
+        padding: const EdgeInsets.all(15),
+        child: Image.asset(
+          "assets/benchpressD.png",
+          width: 300,
         ),
       ),
     ],
@@ -233,7 +254,7 @@ class _PRState extends State<PR> {
         Text(
           widget.version,
           style: const TextStyle(
-            fontSize: 20,
+            fontSize: 15,
             fontWeight: FontWeight.w700,
           ),
         ),
@@ -244,14 +265,14 @@ class _PRState extends State<PR> {
               Text(
                 widget.pr,
                 style: const TextStyle(
-                  fontSize: 20,
+                  fontSize: 15,
                   fontWeight: FontWeight.w700,
                 ),
               ),
               const Text(
                 "kg",
                 style: const TextStyle(
-                  fontSize: 20,
+                  fontSize: 15,
                   fontWeight: FontWeight.w700,
                 ),
               ),

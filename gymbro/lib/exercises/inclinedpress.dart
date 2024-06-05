@@ -3,14 +3,14 @@ import 'package:go_router/go_router.dart';
 import '../preferences.dart';
 import '../timer.dart';
 
-class PecFly extends StatefulWidget {
-  const PecFly({super.key});
+class InclinedPress extends StatefulWidget {
+  const InclinedPress({super.key});
 
   @override
-  State<PecFly> createState() => _PecFlyState();
+  State<InclinedPress> createState() => _InclinedPressState();
 }
 
-class _PecFlyState extends State<PecFly> {
+class _InclinedPressState extends State<InclinedPress> {
   int barIndex = 0;
 
   void _onItemTapped(int index) {
@@ -32,7 +32,7 @@ class _PecFlyState extends State<PecFly> {
           child: const Icon(Icons.arrow_back_ios),
         ),
         title: const Text(
-          "Pec Fly",
+          "Inclined Bench Press",
           style: TextStyle(
             color: Colors.black,
             fontSize: 20,
@@ -49,13 +49,15 @@ class _PecFlyState extends State<PecFly> {
                       Column(
                         children: [
                           title("Working weight"),
-                          PR(pecFly, "Pulley"),
+                          PR(inclinedBenchBar, "Bar"),
+                          PR(inclinedBenchDumbbell, "Dumbbell"),
                         ],
                       ),
                       Column(
                         children: [
                           title("PRs:"),
-                          PR(pecFlyPB, "Pulley"),
+                          PR(inclinedBenchBarPB, "Bar"),
+                          PR(inclinedBenchDumbbellPB, "Dumbbell"),
                         ],
                       ),
                     ],
@@ -119,15 +121,22 @@ Widget description() {
       Padding(
         padding: const EdgeInsets.all(15),
         child: Image.asset(
-          "assets/pecflyP.png",
+          "assets/inclinedpressB.png",
           width: 300,
         ),
       ),
       const Padding(
         padding: EdgeInsets.all(25),
         child: Text(
-          "     The pec fly, or chest fly, is an isolation exercise that targets the pectoral muscles, primarily the pectoralis major. \n\n     It is typically performed using dumbbells on a flat bench or with a cable machine.",
+          "     The inclined bench press is a variation of the traditional bench press that primarily targets the upper portion of the chest (upper pectoralis major) and the shoulders.\n\n     It is performed using a barbell or dumbbells while lying on a bench.",
           style: TextStyle(fontSize: 18),
+        ),
+      ),
+      Padding(
+        padding: const EdgeInsets.all(15),
+        child: Image.asset(
+          "assets/inclinedpressD.png",
+          width: 300,
         ),
       ),
     ],
@@ -139,19 +148,19 @@ Widget steps() {
     children: [
       title("Steps of Execution"),
       list(
-          "- Lie flat on a bench with your feet firmly planted on the ground."),
+          "- Adjust an adjustable bench to an incline angle, typically between 30 to 45 degrees. \n   Lie back on the inclined bench with your feet flat on the ground, maintaining a stable position."),
       list(
-          "- Hold a dumbbell in each hand with your arms extended above your chest, palms facing each other. Keep a slight bend in your elbows to reduce strain on the joints."),
+          "- Grip the barbell or dumbbells with hands slightly wider than shoulder-width apart. Ensure an even and firm grip."),
       list(
-          "- Slowly lower your arms out to the sides in a wide arc, keeping the slight bend in your elbows. Lower the weights until your arms are parallel to the floor or you feel a stretch in your chest."),
+          "- Lift the barbell off the rack with your arms fully extended, positioning it directly above your upper chest if using a barbell."),
       list(
-          "- At the bottom of the movement, your palms should be facing up and your chest fully stretched."),
+          "- Slowly lower the barbell or dumbbells to your upper chest by bending your elbows. The bar or dumbbells should touch your upper chest just below the collarbone."),
       list(
-          "- Bring the dumbbells back together by squeezing your chest muscles, reversing the arc motion. Keep the movement controlled and avoid locking your elbows at the top."),
+          "- Push the weight back up to the starting position by extending your arms. Exhale as you press the weight up, and keep the movement controlled."),
       list(
           "- Continue the movement for the desired number of repetitions, ensuring proper form throughout."),
       list(
-          "- After completing your set, carefully lower the dumbbells to your thighs and then sit up to place them on the ground."),
+          "- After completing your set, carefully guide the barbell back to the rack or place the dumbbells back on the ground in a controlled manner."),
     ],
   );
 }
@@ -161,11 +170,11 @@ Widget benefits() {
     children: [
       title("Benefits"),
       list(
-          "Isolates Chest Muscles: Focuses on the pectoralis major without significant involvement of the triceps."),
+          "Targets Upper Chest: Focuses on the upper portion of the pectoralis major."),
       list(
-          "Enhances Muscle Definition: Helps improve the definition and shape of the chest."),
+          "Engages Shoulders: Activates the anterior deltoids more than the flat bench press."),
       list(
-          "Improves Flexibility: Provides a good stretch to the chest muscles, improving flexibility and range of motion."),
+          "Improves Upper Body Strength: Essential for balanced chest development and upper body strength."),
     ],
   );
 }
@@ -175,13 +184,11 @@ Widget safetyTips() {
     children: [
       title("Safety Tips"),
       list(
-          "Proper Form: Maintain a slight bend in your elbows throughout the exercise to protect your joints."),
-      list(
-          "Controlled Movement: Avoid using heavy weights that you cannot control throughout the range of motion."),
+          "Use a Spotter: Especially when lifting heavy weights, to assist if you struggle to lift the bar."),
+      list("Proper Form: Maintain proper form to avoid shoulder and lower back injuries."),
       list(
           "Warm-Up: Ensure proper warm-up to prepare the muscles and joints for the exercise."),
-      list(
-          "Avoid Overstretching: Do not lower the weights beyond your comfort level to prevent shoulder injuries."),
+      list("Bench Angle: Keep the bench angle moderate (30-45 degrees) to avoid excessive strain on the shoulders."),
     ],
   );
 }

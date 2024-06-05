@@ -33,6 +33,7 @@ class _PecsProgramState extends State<PecsProgram> {
           child: Column(
             children: [
               exerciseContainer(context, "Bench Press", "/benchpress"),
+              exerciseContainer(context, "Inclined Bench Press", "/inclinedpress"),
               exerciseContainer(context, "Pec Fly", "/pecfly"),
             ],
           ),

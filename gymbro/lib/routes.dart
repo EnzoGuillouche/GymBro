@@ -10,13 +10,13 @@ import 'programs/cardio.dart';
 import 'programs/abs.dart';
 import 'programs/legs.dart';
 import 'exercises/benchpress.dart';
+import 'exercises/inclinedpress.dart';
 import 'exercises/pecfly.dart';
 
 final routes = GoRouter(
   initialLocation: "/",
   routes: [
     GoRoute(
-      
       path: "/",
       name: "ProgramsChoose",
       builder: (BuildContext context, GoRouterState state) =>
@@ -72,15 +72,19 @@ final routes = GoRouter(
     ),
     GoRoute(
       path: "/benchpress",
-      name: "BenchPress",
+      name: "Bench Press",
       builder: (BuildContext context, GoRouterState state) =>
           const BenchPress(),
     ),
     GoRoute(
+      path: "/inclinedpress",
+      name: "Inclined Press",
+      builder: (BuildContext context, GoRouterState state) => const InclinedPress(),
+    ),
+    GoRoute(
       path: "/pecfly",
       name: "Pec Fly",
-      builder: (BuildContext context, GoRouterState state) =>
-          const PecFly(),
+      builder: (BuildContext context, GoRouterState state) => const PecFly(),
     ),
   ],
 );
