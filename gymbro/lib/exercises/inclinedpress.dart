@@ -44,22 +44,18 @@ class _InclinedPressState extends State<InclinedPress> {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-                  Row(
+                  Column(
                     children: [
-                      Column(
-                        children: [
-                          title("Working weight"),
-                          PR(inclinedBenchBar, "Bar"),
-                          PR(inclinedBenchDumbbell, "Dumbbell"),
-                        ],
-                      ),
-                      Column(
-                        children: [
-                          title("PRs:"),
-                          PR(inclinedBenchBarPB, "Bar"),
-                          PR(inclinedBenchDumbbellPB, "Dumbbell"),
-                        ],
-                      ),
+                      title("Working weight"),
+                      PR("InclinedBar"),
+                      PR("InclinedDumbbell"),
+                    ],
+                  ),
+                  Column(
+                    children: [
+                      title("PRs:"),
+                      PR("InclinedBarPR"),
+                      PR("InclinedDumbbellPR"),
                     ],
                   ),
                   description(),
@@ -185,19 +181,20 @@ Widget safetyTips() {
       title("Safety Tips"),
       list(
           "Use a Spotter: Especially when lifting heavy weights, to assist if you struggle to lift the bar."),
-      list("Proper Form: Maintain proper form to avoid shoulder and lower back injuries."),
+      list(
+          "Proper Form: Maintain proper form to avoid shoulder and lower back injuries."),
       list(
           "Warm-Up: Ensure proper warm-up to prepare the muscles and joints for the exercise."),
-      list("Bench Angle: Keep the bench angle moderate (30-45 degrees) to avoid excessive strain on the shoulders."),
+      list(
+          "Bench Angle: Keep the bench angle moderate (30-45 degrees) to avoid excessive strain on the shoulders."),
     ],
   );
 }
 
 // ignore: must_be_immutable
 class PR extends StatefulWidget {
-  String pr;
   final String version;
-  PR(this.pr, this.version, {super.key});
+  PR(this.version, {super.key});
 
   @override
   State<PR> createState() => _PRState();
@@ -211,19 +208,19 @@ class _PRState extends State<PR> {
         context: context,
         builder: (BuildContext context) {
           return AlertDialog(
-            title: Text("$version PR:"),
+            title: Text("$version:"),
             actions: [
               TextField(
                 controller: controller,
                 decoration: const InputDecoration(
-                  labelText: "New PR",
+                  labelText: "Enter your new value:",
                 ),
               ),
               GestureDetector(
                 onTap: () {
                   if (isNumeric(controller.text)) {
                     setState(() {
-                      widget.pr = controller.text;
+                      saveValue(widget.version, controller.text);
                     });
                     Navigator.of(context).pop();
                   } else {}
@@ -265,12 +262,27 @@ class _PRState extends State<PR> {
           padding: const EdgeInsets.all(10),
           child: Row(
             children: [
-              Text(
-                widget.pr,
-                style: const TextStyle(
-                  fontSize: 15,
-                  fontWeight: FontWeight.w700,
-                ),
+              FutureBuilder<dynamic>(
+                future: getValue(widget.version),
+                builder: (context, snapshot) {
+                  if (snapshot.hasError) {
+                    return Text(
+                      "Error: ${snapshot.error}",
+                      style: const TextStyle(
+                        fontSize: 15,
+                        fontWeight: FontWeight.w700,
+                      ),
+                    );
+                  } else {
+                    return Text(
+                      snapshot.data ?? "0",
+                      style: const TextStyle(
+                        fontSize: 15,
+                        fontWeight: FontWeight.w700,
+                      ),
+                    );
+                  }
+                },
               ),
               const Text(
                 "kg",

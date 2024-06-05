@@ -44,20 +44,18 @@ class _PecFlyState extends State<PecFly> {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-                  Row(
+                  Column(
                     children: [
-                      Column(
-                        children: [
-                          title("Working weight"),
-                          PR(pecFly, "Pulley"),
-                        ],
-                      ),
-                      Column(
-                        children: [
-                          title("PRs:"),
-                          PR(pecFlyPB, "Pulley"),
-                        ],
-                      ),
+                      title("Working weight"),
+                      PR("ButterflyPulley"),
+                      PR("ButterflyMachine"),
+                    ],
+                  ),
+                  Column(
+                    children: [
+                      title("PRs:"),
+                      PR("ButterflyPulleyPR"),
+                      PR("ButterflyMachinePR"),
                     ],
                   ),
                   description(),
@@ -126,8 +124,15 @@ Widget description() {
       const Padding(
         padding: EdgeInsets.all(25),
         child: Text(
-          "     The pec fly, or chest fly, is an isolation exercise that targets the pectoral muscles, primarily the pectoralis major. \n\n     It is typically performed using dumbbells on a flat bench or with a cable machine.",
+          "     The pec fly, or chest fly, is an isolation exercise that targets the pectoral muscles, primarily the pectoralis major. \n\n     It is typically performed using a machine or with a cable machine.",
           style: TextStyle(fontSize: 18),
+        ),
+      ),
+      Padding(
+        padding: const EdgeInsets.all(15),
+        child: Image.asset(
+          "assets/pecflyM.png",
+          width: 300,
         ),
       ),
     ],
@@ -188,9 +193,8 @@ Widget safetyTips() {
 
 // ignore: must_be_immutable
 class PR extends StatefulWidget {
-  String pr;
   final String version;
-  PR(this.pr, this.version, {super.key});
+  PR(this.version, {super.key});
 
   @override
   State<PR> createState() => _PRState();
@@ -204,19 +208,19 @@ class _PRState extends State<PR> {
         context: context,
         builder: (BuildContext context) {
           return AlertDialog(
-            title: Text("$version PR:"),
+            title: Text("$version:"),
             actions: [
               TextField(
                 controller: controller,
                 decoration: const InputDecoration(
-                  labelText: "New PR",
+                  labelText: "Enter your new value:",
                 ),
               ),
               GestureDetector(
                 onTap: () {
                   if (isNumeric(controller.text)) {
                     setState(() {
-                      widget.pr = controller.text;
+                      saveValue(widget.version, controller.text);
                     });
                     Navigator.of(context).pop();
                   } else {}
@@ -258,16 +262,31 @@ class _PRState extends State<PR> {
           padding: const EdgeInsets.all(10),
           child: Row(
             children: [
-              Text(
-                widget.pr,
-                style: const TextStyle(
-                  fontSize: 15,
-                  fontWeight: FontWeight.w700,
-                ),
+              FutureBuilder<dynamic>(
+                future: getValue(widget.version),
+                builder: (context, snapshot) {
+                  if (snapshot.hasError) {
+                    return Text(
+                      "Error: ${snapshot.error}",
+                      style: const TextStyle(
+                        fontSize: 15,
+                        fontWeight: FontWeight.w700,
+                      ),
+                    );
+                  } else {
+                    return Text(
+                      snapshot.data ?? "0",
+                      style: const TextStyle(
+                        fontSize: 15,
+                        fontWeight: FontWeight.w700,
+                      ),
+                    );
+                  }
+                },
               ),
               const Text(
                 "kg",
-                style: const TextStyle(
+                style: TextStyle(
                   fontSize: 15,
                   fontWeight: FontWeight.w700,
                 ),

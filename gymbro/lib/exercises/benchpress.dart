@@ -39,35 +39,33 @@ class _BenchPressState extends State<BenchPress> {
           ),
         ),
       ),
-      body: barIndex == 0 ? SingleChildScrollView(
-        child:  Column(
+      body: barIndex == 0
+          ? SingleChildScrollView(
+              child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-                  Row(
+                  Column(
                     children: [
-                      Column(
-                        children: [
-                          title("Working weight"),
-                          PR(benchBar, "Bar"),
-                          PR(benchDumbbell, "Dumbbell"),
-                        ],
-                      ),
-                      Column(
-                        children: [
-                          title("PRs:"),
-                          PR(benchBarPB, "Bar"),
-                          PR(benchDumbbellPB, "Dumbbell"),
-                        ],
-                      ),
+                      title("Working weight"),
+                      PR("BenchBar"),
+                      PR("BenchDumbbell"),
                     ],
                   ),
-            description(),
-            steps(),
-            benefits(),
-            safetyTips(),
-          ],
-        ),
-      ) : Timer(),
+                  Column(
+                    children: [
+                      title("PRs:"),
+                      PR("BenchBarPR"),
+                      PR("BenchDumbbellPR"),
+                    ],
+                  ),
+                  description(),
+                  steps(),
+                  benefits(),
+                  safetyTips(),
+                ],
+              ),
+            )
+          : Timer(),
       bottomNavigationBar: BottomNavigationBar(
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
@@ -192,9 +190,8 @@ Widget safetyTips() {
 
 // ignore: must_be_immutable
 class PR extends StatefulWidget {
-  String pr;
   final String version;
-  PR(this.pr, this.version, {super.key});
+  PR(this.version, {super.key});
 
   @override
   State<PR> createState() => _PRState();
@@ -208,19 +205,19 @@ class _PRState extends State<PR> {
         context: context,
         builder: (BuildContext context) {
           return AlertDialog(
-            title: Text("$version PR:"),
+            title: Text("$version:"),
             actions: [
               TextField(
                 controller: controller,
                 decoration: const InputDecoration(
-                  labelText: "New PR",
+                  labelText: "Enter your new value:",
                 ),
               ),
               GestureDetector(
                 onTap: () {
                   if (isNumeric(controller.text)) {
                     setState(() {
-                      widget.pr = controller.text;
+                      saveValue(version, controller.text);
                     });
                     Navigator.of(context).pop();
                   } else {}
@@ -262,12 +259,27 @@ class _PRState extends State<PR> {
           padding: const EdgeInsets.all(10),
           child: Row(
             children: [
-              Text(
-                widget.pr,
-                style: const TextStyle(
-                  fontSize: 15,
-                  fontWeight: FontWeight.w700,
-                ),
+              FutureBuilder<dynamic>(
+                future: getValue(widget.version),
+                builder: (context, snapshot) {
+                  if (snapshot.hasError) {
+                    return Text(
+                      "Error: ${snapshot.error}",
+                      style: const TextStyle(
+                        fontSize: 15,
+                        fontWeight: FontWeight.w700,
+                      ),
+                    );
+                  } else {
+                    return Text(
+                      snapshot.data ?? "0",
+                      style: const TextStyle(
+                        fontSize: 15,
+                        fontWeight: FontWeight.w700,
+                      ),
+                    );
+                  }
+                },
               ),
               const Text(
                 "kg",
