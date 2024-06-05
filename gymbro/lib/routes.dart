@@ -12,6 +12,7 @@ import 'programs/legs.dart';
 import 'exercises/benchpress.dart';
 import 'exercises/inclinedpress.dart';
 import 'exercises/pecfly.dart';
+import 'exercises/lowerpecfly.dart';
 
 final routes = GoRouter(
   initialLocation: "/",
@@ -85,6 +86,11 @@ final routes = GoRouter(
       path: "/pecfly",
       name: "Pec Fly",
       builder: (BuildContext context, GoRouterState state) => const PecFly(),
+    ),
+    GoRoute(
+      path: "/lowerpecfly",
+      name: "Lower Pec Fly",
+      builder: (BuildContext context, GoRouterState state) => const LowerPecFly(),
     ),
   ],
 );

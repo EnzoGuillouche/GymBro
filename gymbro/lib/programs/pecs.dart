@@ -22,20 +22,23 @@ class _PecsProgramState extends State<PecsProgram> {
             child: const Icon(Icons.arrow_back_ios),
           ),
           title: const Text(
-            "Pecs",
+            "Pecs  -  Exercises",
             style: TextStyle(
               color: Colors.black,
               fontSize: 20,
             ),
           ),
         ),
-        body: Center(
-          child: Column(
-            children: [
-              exerciseContainer(context, "Bench Press", "/benchpress"),
-              exerciseContainer(context, "Inclined Bench Press", "/inclinedpress"),
-              exerciseContainer(context, "Pec Fly", "/pecfly"),
-            ],
+        body: SingleChildScrollView(
+          child: Center(
+            child: Column(
+              children: [
+                exerciseContainer(context, "Bench Press", "/benchpress"),
+                exerciseContainer(context, "Inclined Bench Press", "/inclinedpress"),
+                exerciseContainer(context, "Pec Fly", "/pecfly"),
+                exerciseContainer(context, "Lower Pec Fly", "/lowerpecfly"),
+              ],
+            ),
           ),
         ),
       ),
