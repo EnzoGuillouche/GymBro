@@ -14,6 +14,7 @@ import 'exercises/inclinedpress.dart';
 import 'exercises/pecfly.dart';
 import 'exercises/lowerpecfly.dart';
 import 'exercises/dips.dart';
+import 'exercises/skullcrusher.dart';
 
 final routes = GoRouter(
   initialLocation: "/",
@@ -99,5 +100,6 @@ final routes = GoRouter(
       builder: (BuildContext context, GoRouterState state) =>
           const Dips(),
     ),
+    GoRoute(path: "/skullcrusher", name: "Skull Crusher", builder: (BuildContext context, GoRouterState state) => const SkullCrusher()),
   ],
 );

@@ -34,6 +34,7 @@ class _TricepsProgramState extends State<TricepsProgram> {
             child: Column(
               children: [
                 exerciseContainer(context, "Dips", "/dips"),
+                exerciseContainer(context, "Skull Crushers", "/skullcrusher"),
               ],
             ),
           ),

@@ -3,14 +3,14 @@ import 'package:go_router/go_router.dart';
 import '../preferences.dart';
 import '../timer.dart';
 
-class InclinedPress extends StatefulWidget {
-  const InclinedPress({super.key});
+class SkullCrusher extends StatefulWidget {
+  const SkullCrusher({super.key});
 
   @override
-  State<InclinedPress> createState() => _InclinedPressState();
+  State<SkullCrusher> createState() => _SkullCrusherState();
 }
 
-class _InclinedPressState extends State<InclinedPress> {
+class _SkullCrusherState extends State<SkullCrusher> {
   int barIndex = 0;
 
   void _onItemTapped(int index) {
@@ -27,12 +27,12 @@ class _InclinedPressState extends State<InclinedPress> {
         backgroundColor: Colors.amber,
         leading: GestureDetector(
           onTap: () {
-            context.go("/pecs");
+            context.go("/triceps");
           },
           child: const Icon(Icons.arrow_back_ios),
         ),
         title: const Text(
-          "Inclined Bench Press",
+          "Skull Crushers",
           style: TextStyle(
             color: Colors.black,
             fontSize: 20,
@@ -47,15 +47,13 @@ class _InclinedPressState extends State<InclinedPress> {
                   Column(
                     children: [
                       title("Working weight"),
-                      PR("InclinedBar"),
-                      PR("InclinedDumbbell"),
+                      PR("SkullCrushers"),
                     ],
                   ),
                   Column(
                     children: [
                       title("PRs:"),
-                      PR("InclinedBarPR"),
-                      PR("InclinedDumbbellPR"),
+                      PR("SkullCrushersPR"),
                     ],
                   ),
                   description(),
@@ -117,22 +115,15 @@ Widget description() {
       Padding(
         padding: const EdgeInsets.all(15),
         child: Image.asset(
-          "assets/inclinedpressB.png",
+          "assets/skullcrusher.png",
           width: 300,
         ),
       ),
       const Padding(
         padding: EdgeInsets.all(25),
         child: Text(
-          "     The inclined bench press is a variation of the traditional bench press that primarily targets the upper portion of the chest (upper pectoralis major) and the shoulders.\n\n     It is performed using a barbell or dumbbells while lying on a bench.",
+          "     Skull crushers, also known as lying triceps extensions, are an isolation exercise that specifically targets the triceps.\n\n     They can be performed sited or lied down on a bench, using dumbbells or an EZ curl bar.",
           style: TextStyle(fontSize: 18),
-        ),
-      ),
-      Padding(
-        padding: const EdgeInsets.all(15),
-        child: Image.asset(
-          "assets/inclinedpressD.png",
-          width: 300,
         ),
       ),
     ],
@@ -144,19 +135,19 @@ Widget steps() {
     children: [
       title("Steps of Execution"),
       list(
-          "- Adjust an adjustable bench to an incline angle, typically between 30 to 45 degrees. \n   Lie back on the inclined bench with your feet flat on the ground, maintaining a stable position."),
+          "- Lie flat on a bench with your feet firmly planted on the ground. Hold an EZ curl bar, barbell, or dumbbells with an overhand grip (palms facing forward) and extend your arms straight up towards the ceiling."),
       list(
-          "- Grip the barbell or dumbbells with hands slightly wider than shoulder-width apart. Ensure an even and firm grip."),
+          "- Your hands should be shoulder-width apart or slightly narrower."),
       list(
-          "- Lift the barbell off the rack with your arms fully extended, positioning it directly above your upper chest if using a barbell."),
+          "- Keeping your upper arms stationary and elbows pointing forward, slowly lower the weight towards your forehead (or just above your head). Bend your elbows to bring the bar or dumbbells down."),
       list(
-          "- Slowly lower the barbell or dumbbells to your upper chest by bending your elbows. The bar or dumbbells should touch your upper chest just below the collarbone."),
+          "- Lower the weight until your forearms are just past parallel to the floor or you feel a stretch in your triceps."),
       list(
-          "- Push the weight back up to the starting position by extending your arms. Exhale as you press the weight up, and keep the movement controlled."),
+          "- Push the weight back up to the starting position by straightening your arms. Exhale as you extend your elbows."),
       list(
           "- Continue the movement for the desired number of repetitions, ensuring proper form throughout."),
       list(
-          "- After completing your set, carefully guide the barbell back to the rack or place the dumbbells back on the ground in a controlled manner."),
+          "- After completing your set, carefully lower the bar or dumbbells to your thighs and then sit up to place them on the ground."),
     ],
   );
 }
@@ -166,11 +157,11 @@ Widget benefits() {
     children: [
       title("Benefits"),
       list(
-          "Targets Upper Chest: Focuses on the upper portion of the pectoralis major."),
+          "Targets Triceps: Isolates the triceps brachii, specifically the long head."),
       list(
-          "Engages Shoulders: Activates the anterior deltoids more than the flat bench press."),
+          "Builds Arm Strength: Effective for building size and strength in the triceps."),
       list(
-          "Improves Upper Body Strength: Essential for balanced chest development and upper body strength."),
+          "Complements Other Presses: Enhances performance in compound pressing movements like the bench press."),
     ],
   );
 }
@@ -180,13 +171,15 @@ Widget safetyTips() {
     children: [
       title("Safety Tips"),
       list(
-          "Use a Spotter: Especially when lifting heavy weights, to assist if you struggle to lift the bar."),
+          "Proper Form: Keep your upper arms stationary throughout the exercise to ensure the triceps do the work. Avoid flaring your elbows out to the sides."),
       list(
-          "Proper Form: Maintain proper form to avoid shoulder and lower back injuries."),
+          "Controlled Movement: Perform the exercise in a slow and controlled manner to maximize muscle engagement and prevent injury."),
       list(
           "Warm-Up: Ensure proper warm-up to prepare the muscles and joints for the exercise."),
       list(
-          "Bench Angle: Keep the bench angle moderate (30-45 degrees) to avoid excessive strain on the shoulders."),
+          "Avoid Overextension: Do not let the weight go too far back, which can place excessive strain on the elbows and shoulders."),
+      list(
+          "Spotter: Consider having a spotter, especially when using heavier weights, to assist if you struggle to lift the bar back up."),
     ],
   );
 }
