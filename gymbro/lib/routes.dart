@@ -82,7 +82,8 @@ final routes = GoRouter(
     GoRoute(
       path: "/inclinedpress",
       name: "Inclined Press",
-      builder: (BuildContext context, GoRouterState state) => const InclinedPress(),
+      builder: (BuildContext context, GoRouterState state) =>
+          const InclinedPress(),
     ),
     GoRoute(
       path: "/pecfly",
@@ -92,14 +93,106 @@ final routes = GoRouter(
     GoRoute(
       path: "/lowerpecfly",
       name: "Lower Pec Fly",
-      builder: (BuildContext context, GoRouterState state) => const LowerPecFly(),
+      builder: (BuildContext context, GoRouterState state) =>
+          const LowerPecFly(),
     ),
     GoRoute(
       path: "/dips",
       name: "Dips",
-      builder: (BuildContext context, GoRouterState state) =>
-          const Dips(),
+      builder: (BuildContext context, GoRouterState state) => const Dips(),
     ),
-    GoRoute(path: "/skullcrusher", name: "Skull Crusher", builder: (BuildContext context, GoRouterState state) => const SkullCrusher()),
+    GoRoute(
+        path: "/skullcrusher",
+        name: "Skull Crusher",
+        builder: (BuildContext context, GoRouterState state) =>
+            const SkullCrusher()),
   ],
 );
+
+String getRoute(int index) {
+  switch (index) {
+    case 0:
+      return "/";
+    case 1:
+      return "/pecs";
+    case 2:
+      return "/triceps";
+    case 3:
+      return "/shoulders";
+    case 4:
+      return "/biceps";
+    case 5:
+      return "/back";
+    case 6:
+      return "/abs";
+    case 7:
+      return "/legs";
+    case 8:
+      return "/cardio";
+    default:
+      return "/";
+  }
+}
+
+// ignore: must_be_immutable
+class Dashboard extends StatefulWidget {
+  int selectedIndex;
+  Dashboard(this.selectedIndex, {super.key});
+
+  @override
+  State<Dashboard> createState() => _DashboardState();
+}
+
+class _DashboardState extends State<Dashboard> {
+  @override
+  Widget build(BuildContext context) {
+    return NavigationRail(
+      extended: false,
+      selectedIndex: widget.selectedIndex,
+      onDestinationSelected: (int index) {
+        setState(() {
+          widget.selectedIndex = index;
+          context.go(getRoute(widget.selectedIndex));
+        });
+      },
+      destinations: const [
+        NavigationRailDestination(
+          icon: Icon(Icons.home),
+          label: Text('Home'),
+        ),
+        NavigationRailDestination(
+          icon: ImageIcon(AssetImage("assets/chest_icon.png")),
+          label: Text('Pecs'),
+        ),
+        NavigationRailDestination(
+          icon: ImageIcon(AssetImage("assets/triceps_icon.png")),
+          label: Text('Triceps'),
+        ),
+        NavigationRailDestination(
+          icon: ImageIcon(AssetImage("assets/shoulders_icon.png")),
+          label: Text('Shoulders'),
+        ),
+        NavigationRailDestination(
+          icon: ImageIcon(AssetImage("assets/biceps_icon.png")),
+          label: Text('Biceps'),
+        ),
+        NavigationRailDestination(
+          icon: ImageIcon(AssetImage("assets/back_icon.png")),
+          label: Text('Back'),
+        ),
+        NavigationRailDestination(
+          icon: ImageIcon(AssetImage("assets/abs_icon.png")),
+          label: Text('Abs'),
+        ),
+        NavigationRailDestination(
+          icon: ImageIcon(AssetImage("assets/quads_icon.png")),
+          label: Text('Legs'),
+        ),
+        NavigationRailDestination(
+          icon: ImageIcon(AssetImage("assets/cardio_icon.png")),
+          label: Text('Cardio'),
+        ),
+      ],
+    );
+  }
+}
