@@ -15,6 +15,7 @@ import 'exercises/pecfly.dart';
 import 'exercises/lowerpecfly.dart';
 import 'exercises/dips.dart';
 import 'exercises/skullcrusher.dart';
+import 'exercises/tricepsextpulley.dart';
 
 final routes = GoRouter(
   initialLocation: "/",
@@ -106,6 +107,11 @@ final routes = GoRouter(
         name: "Skull Crusher",
         builder: (BuildContext context, GoRouterState state) =>
             const SkullCrusher()),
+    GoRoute(
+        path: "/tricepspulley",
+        name: "Triceps Pulley",
+        builder: (BuildContext context, GoRouterState state) =>
+            const TricepsPulley()),
   ],
 );
 

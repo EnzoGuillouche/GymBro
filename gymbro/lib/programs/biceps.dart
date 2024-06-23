@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'exercise.dart';
 import 'package:go_router/go_router.dart';
 
 class BicepsProgram extends StatefulWidget {
