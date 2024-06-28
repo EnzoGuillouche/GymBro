@@ -1,4 +1,6 @@
 import 'package:GymBro/routes.dart';
+import 'package:GymBro/schedule.dart';
+import 'package:GymBro/timer.dart';
 import 'package:flutter/material.dart';
 
 class ProgramsChoose extends StatefulWidget {
@@ -13,29 +15,32 @@ class _ProgramsChooseState extends State<ProgramsChoose> {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        appBar: AppBar(
-          title: const Text(
-            "GymBro",
-            style: TextStyle(
-              fontWeight: FontWeight.bold,
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text(
+          "GymBro",
+          style: TextStyle(
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+        backgroundColor: Colors.amber,
+      ),
+      body: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Dashboard(_selectedIndex),
+          SingleChildScrollView(
+            child: Column(
+              children: [
+                Schedule(),
+                Padding(
+                  padding: const EdgeInsets.only(top: 25, right: 10,),
+                  child: Timer(),
+                ),
+              ],
             ),
           ),
-          backgroundColor: Colors.amber,
-        ),
-        body: Row(
-          children: [
-            Dashboard(_selectedIndex),
-            SingleChildScrollView(
-              child: Center(
-                child: Text(
-                  "This is the home page.",
-                ),
-              ),
-            ),
-          ],
-        ),
+        ],
       ),
     );
   }

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+var date = DateTime.now();
+
 saveValue(String key, String value) async {
   final SharedPreferences prefs = await SharedPreferences.getInstance();
   await prefs.setString(key, value);
