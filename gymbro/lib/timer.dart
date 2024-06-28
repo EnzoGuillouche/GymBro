@@ -29,69 +29,81 @@ class _TimerState extends State<Timer> {
   Widget build(BuildContext context) {
     return Center(
       child: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          GestureDetector(
-            onTap: () {
-              debugPrint("Tapped the timer");
-              if (timeSpending) {
-                timeSpending = false;
-                _stopWatchTimer.onStopTimer();
-              } else {
-                timeSpending = true;
-                _stopWatchTimer.onStartTimer();
-              }
-            },
-            child: Container(
-              height: 300,
-              width: 300,
-              decoration: BoxDecoration(
-                border: Border.all(color: Colors.amber, width: 3),
-                borderRadius: const BorderRadius.all(Radius.circular(200)),
-              ),
-              child: StreamBuilder<int>(
-                stream: _stopWatchTimer.rawTime,
-                initialData: 0,
-                builder: (context, snap) {
-                  final value = snap.data;
-                  final displayTime = StopWatchTimer.getDisplayTime(value!);
-                  return Center(
-                    child: Padding(
-                      padding: const EdgeInsets.all(8),
-                      child: Text(
-                        displayTime,
-                        style: const TextStyle(
-                            fontSize: 40,
-                            fontFamily: 'Helvetica',
-                            fontWeight: FontWeight.bold),
+          Padding(
+            padding: const EdgeInsets.only(
+              top: 20,
+              bottom: 20,
+            ),
+            child: GestureDetector(
+              onTap: () {
+                debugPrint("Tapped the timer");
+                if (timeSpending) {
+                  timeSpending = false;
+                  _stopWatchTimer.onStopTimer();
+                } else {
+                  timeSpending = true;
+                  _stopWatchTimer.onStartTimer();
+                }
+              },
+              child: Container(
+                height: 300,
+                width: 300,
+                decoration: BoxDecoration(
+                  border: Border.all(color: Colors.amber, width: 3),
+                  borderRadius: const BorderRadius.all(Radius.circular(200)),
+                ),
+                child: StreamBuilder<int>(
+                  stream: _stopWatchTimer.rawTime,
+                  initialData: 0,
+                  builder: (context, snap) {
+                    final value = snap.data;
+                    final displayTime = StopWatchTimer.getDisplayTime(value!);
+                    return Center(
+                      child: Padding(
+                        padding: const EdgeInsets.all(8),
+                        child: Text(
+                          displayTime,
+                          style: const TextStyle(
+                              fontSize: 40,
+                              fontFamily: 'Helvetica',
+                              fontWeight: FontWeight.bold),
+                        ),
                       ),
-                    ),
-                  );
-                },
+                    );
+                  },
+                ),
               ),
             ),
           ),
-          GestureDetector(
-            onTap: () {
-              debugPrint("Reset");
-              _stopWatchTimer.onResetTimer();
-            },
-            child: Container(
-              width: 200,
-              height: 50,
-              decoration: const BoxDecoration(
-                color: Colors.amber,
-                borderRadius: BorderRadius.all(
-                  Radius.circular(25),
+          Padding(
+            padding: const EdgeInsets.only(
+              top: 20,
+              bottom: 20,
+            ),
+            child: GestureDetector(
+              onTap: () {
+                debugPrint("Reset");
+                _stopWatchTimer.onResetTimer();
+              },
+              child: Container(
+                width: 200,
+                height: 50,
+                decoration: const BoxDecoration(
+                  color: Colors.amber,
+                  borderRadius: BorderRadius.all(
+                    Radius.circular(25),
+                  ),
                 ),
-              ),
-              child: const Center(
-                child: Text(
-                  "Reset",
-                  style: TextStyle(
-                      fontSize: 25,
-                      fontFamily: 'Helvetica',
-                      fontWeight: FontWeight.bold),
+                child: const Center(
+                  child: Text(
+                    "Reset",
+                    style: TextStyle(
+                        fontSize: 25,
+                        fontFamily: 'Helvetica',
+                        fontWeight: FontWeight.bold),
+                  ),
                 ),
               ),
             ),

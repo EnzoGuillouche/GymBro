@@ -15,11 +15,17 @@ class _ScheduleState extends State<Schedule> {
     return Padding(
       padding: const EdgeInsets.only(
         right: 40,
-        top: 40,
+        top: 25,
       ),
       child: Column(
         children: [
-          todaysProgram(),
+          const Text(
+            "Schedule:",
+            style: TextStyle(
+              fontSize: 20,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
           ScheduleDay("Monday"),
           ScheduleDay("Tuesday"),
           ScheduleDay("Wednesday"),
@@ -31,45 +37,6 @@ class _ScheduleState extends State<Schedule> {
       ),
     );
   }
-}
-
-Widget todaysProgram() {
-  return Padding(
-    padding: const EdgeInsets.only(bottom: 25),
-    child: FutureBuilder<dynamic>(
-      future: getValue(DateFormat('EEEE').format(date)),
-      builder: (context, snapshot) {
-        if (snapshot.hasError) {
-          return Text(
-            "Error: ${snapshot.error}",
-            style: const TextStyle(
-              fontSize: 15,
-              fontWeight: FontWeight.w700,
-            ),
-          );
-        } else {
-          return Column(
-            children: [
-              const Text(
-                "Today's program: ",
-                style: TextStyle(
-                  fontSize: 20,
-                  fontWeight: FontWeight.w700,
-                ),
-              ),
-              Text(
-                (snapshot.data ?? "None"),
-                style: const TextStyle(
-                  fontSize: 20,
-                  fontWeight: FontWeight.w700,
-                ),
-              ),
-            ],
-          );
-        }
-      },
-    ),
-  );
 }
 
 class ScheduleDay extends StatefulWidget {

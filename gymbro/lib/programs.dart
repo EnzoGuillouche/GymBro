@@ -34,7 +34,7 @@ class _ProgramsChooseState extends State<ProgramsChoose> {
               children: [
                 Schedule(),
                 Padding(
-                  padding: const EdgeInsets.only(top: 25, right: 10,),
+                  padding: const EdgeInsets.only(right: 10,),
                   child: Timer(),
                 ),
               ],
