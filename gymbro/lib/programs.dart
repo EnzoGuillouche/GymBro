@@ -1,7 +1,8 @@
+import 'package:flutter/material.dart';
 import 'package:GymBro/routes.dart';
 import 'package:GymBro/schedule.dart';
 import 'package:GymBro/timer.dart';
-import 'package:flutter/material.dart';
+import 'package:GymBro/prList.dart';
 
 class ProgramsChoose extends StatefulWidget {
   const ProgramsChoose({super.key});
@@ -33,8 +34,12 @@ class _ProgramsChooseState extends State<ProgramsChoose> {
             child: Column(
               children: [
                 Schedule(),
+                Prlist(),
                 Padding(
-                  padding: const EdgeInsets.only(right: 10,),
+                  padding: const EdgeInsets.only(
+                    right: 10,
+                    top: 25,
+                  ),
                   child: Timer(),
                 ),
               ],
