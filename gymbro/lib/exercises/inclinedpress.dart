@@ -47,15 +47,15 @@ class _InclinedPressState extends State<InclinedPress> {
                   Column(
                     children: [
                       title("Working weight"),
-                      PR("InclinedBar"),
-                      PR("InclinedDumbbell"),
+                      PR("Inclined Bar"),
+                      PR("Inclined Dumbbell"),
                     ],
                   ),
                   Column(
                     children: [
                       title("PRs:"),
-                      PR("InclinedBarPR"),
-                      PR("InclinedDumbbellPR"),
+                      PR("Inclined Bar PR"),
+                      PR("Inclined Dumbbell PR"),
                     ],
                   ),
                   description(),
@@ -83,31 +83,6 @@ class _InclinedPressState extends State<InclinedPress> {
       ),
     ));
   }
-}
-
-Widget title(String title) {
-  return Padding(
-    padding: const EdgeInsets.all(25),
-    child: Text(
-      title,
-      style: const TextStyle(
-        fontSize: 25,
-        fontWeight: FontWeight.bold,
-      ),
-    ),
-  );
-}
-
-Widget list(String list) {
-  return Padding(
-    padding: const EdgeInsets.all(10),
-    child: Text(
-      list,
-      style: const TextStyle(
-        fontSize: 18,
-      ),
-    ),
-  );
 }
 
 Widget description() {

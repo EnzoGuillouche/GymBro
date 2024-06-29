@@ -16,6 +16,8 @@ import 'exercises/lowerpecfly.dart';
 import 'exercises/dips.dart';
 import 'exercises/skullcrusher.dart';
 import 'exercises/tricepsextpulley.dart';
+import 'exercises/shoulderpress.dart';
+import 'exercises/reardelt.dart';
 
 final routes = GoRouter(
   initialLocation: "/",
@@ -103,15 +105,29 @@ final routes = GoRouter(
       builder: (BuildContext context, GoRouterState state) => const Dips(),
     ),
     GoRoute(
-        path: "/skullcrusher",
-        name: "Skull Crusher",
-        builder: (BuildContext context, GoRouterState state) =>
-            const SkullCrusher()),
+      path: "/skullcrusher",
+      name: "Skull Crusher",
+      builder: (BuildContext context, GoRouterState state) =>
+          const SkullCrusher(),
+    ),
     GoRoute(
-        path: "/tricepspulley",
-        name: "Triceps Pulley",
-        builder: (BuildContext context, GoRouterState state) =>
-            const TricepsPulley()),
+      path: "/tricepspulley",
+      name: "Triceps Pulley",
+      builder: (BuildContext context, GoRouterState state) =>
+          const TricepsPulley(),
+    ),
+    GoRoute(
+      path: "/shoulderpress",
+      name: "Shoulder Press",
+      builder: (BuildContext context, GoRouterState state) =>
+          const ShoulderPress(),
+    ),
+    GoRoute(
+      path: "/reardelt",
+      name: "Rear Delt",
+      builder: (BuildContext context, GoRouterState state) =>
+          const RearDelt(),
+    ),
   ],
 );
 

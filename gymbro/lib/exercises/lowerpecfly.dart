@@ -47,13 +47,13 @@ class _LowerPecFlyState extends State<LowerPecFly> {
                   Column(
                     children: [
                       title("Working weight"),
-                      PR("LowerFlyPulley"),
+                      PR("Lower Fly Pulley"),
                     ],
                   ),
                   Column(
                     children: [
                       title("PRs:"),
-                      PR("LowerFlyPulleyPR"),
+                      PR("Lower Fly Pulley PR"),
                     ],
                   ),
                   description(),
@@ -81,31 +81,6 @@ class _LowerPecFlyState extends State<LowerPecFly> {
       ),
     ));
   }
-}
-
-Widget title(String title) {
-  return Padding(
-    padding: const EdgeInsets.all(25),
-    child: Text(
-      title,
-      style: const TextStyle(
-        fontSize: 25,
-        fontWeight: FontWeight.bold,
-      ),
-    ),
-  );
-}
-
-Widget list(String list) {
-  return Padding(
-    padding: const EdgeInsets.all(10),
-    child: Text(
-      list,
-      style: const TextStyle(
-        fontSize: 18,
-      ),
-    ),
-  );
 }
 
 Widget description() {

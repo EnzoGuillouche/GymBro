@@ -3,14 +3,14 @@ import 'package:go_router/go_router.dart';
 import '../preferences.dart';
 import '../timer.dart';
 
-class SkullCrusher extends StatefulWidget {
-  const SkullCrusher({super.key});
+class RearDelt extends StatefulWidget {
+  const RearDelt({super.key});
 
   @override
-  State<SkullCrusher> createState() => _SkullCrusherState();
+  State<RearDelt> createState() => _RearDeltState();
 }
 
-class _SkullCrusherState extends State<SkullCrusher> {
+class _RearDeltState extends State<RearDelt> {
   int barIndex = 0;
 
   void _onItemTapped(int index) {
@@ -27,12 +27,12 @@ class _SkullCrusherState extends State<SkullCrusher> {
         backgroundColor: Colors.amber,
         leading: GestureDetector(
           onTap: () {
-            context.go("/triceps");
+            context.go("/shoulders");
           },
           child: const Icon(Icons.arrow_back_ios),
         ),
         title: const Text(
-          "Skull Crushers",
+          "Rear Delt",
           style: TextStyle(
             color: Colors.black,
             fontSize: 20,
@@ -47,13 +47,15 @@ class _SkullCrusherState extends State<SkullCrusher> {
                   Column(
                     children: [
                       title("Working weight"),
-                      PR("Skull Crushers"),
+                      PR("Rear Delt Cable"),
+                      PR("Rear Delt Machine"),
                     ],
                   ),
                   Column(
                     children: [
                       title("PRs:"),
-                      PR("Skull Crushers PR"),
+                      PR("Rear Delt Cable PR"),
+                      PR("Rear Delt Machine PR"),
                     ],
                   ),
                   description(),
@@ -90,15 +92,22 @@ Widget description() {
       Padding(
         padding: const EdgeInsets.all(15),
         child: Image.asset(
-          "assets/skullcrusher.png",
+          "assets/reardeltC.png",
           width: 300,
         ),
       ),
       const Padding(
         padding: EdgeInsets.all(25),
         child: Text(
-          "     Skull crushers, also known as lying triceps extensions, are an isolation exercise that specifically targets the triceps.\n\n     They can be performed sited or lied down on a bench, using dumbbells or an EZ curl bar.",
+          "     The rear delt fly, also known as the reverse fly or reverse pec deck, is an isolation exercise that specifically targets the posterior deltoids (rear delts). \n\n     It can be performed using dumbbells, cables, or a machine.",
           style: TextStyle(fontSize: 18),
+        ),
+      ),
+      Padding(
+        padding: const EdgeInsets.all(15),
+        child: Image.asset(
+          "assets/reardeltM.png",
+          width: 300,
         ),
       ),
     ],
@@ -110,19 +119,19 @@ Widget steps() {
     children: [
       title("Steps of Execution"),
       list(
-          "- Lie flat on a bench with your feet firmly planted on the ground. Hold an EZ curl bar, barbell, or dumbbells with an overhand grip (palms facing forward) and extend your arms straight up towards the ceiling."),
+          "- Lean forward at the hips, keeping your back straight and your chest up. Your torso should be nearly parallel to the floor."),
       list(
-          "- Your hands should be shoulder-width apart or slightly narrower."),
+          "- Keep a slight bend in your elbows and engage your core for stability."),
       list(
-          "- Keeping your upper arms stationary and elbows pointing forward, slowly lower the weight towards your forehead (or just above your head). Bend your elbows to bring the bar or dumbbells down."),
+          "- Raise your arms out to the sides in a wide arc motion until they are level with your shoulders. Focus on squeezing your shoulder blades together at the top of the movement."),
       list(
-          "- Lower the weight until your forearms are just past parallel to the floor or you feel a stretch in your triceps."),
+          "- At the top of the movement, pause briefly and squeeze your rear deltoids."),
       list(
-          "- Push the weight back up to the starting position by straightening your arms. Exhale as you extend your elbows."),
+          "- Slowly lower the weight back to the starting position, maintaining control throughout the movement."),
       list(
           "- Continue the movement for the desired number of repetitions, ensuring proper form throughout."),
       list(
-          "- After completing your set, carefully lower the bar or dumbbells to your thighs and then sit up to place them on the ground."),
+          "- After completing your set, carefully lower the dumbbells to the ground or rack them if using a machine."),
     ],
   );
 }
@@ -132,11 +141,11 @@ Widget benefits() {
     children: [
       title("Benefits"),
       list(
-          "Targets Triceps: Isolates the triceps brachii, specifically the long head."),
+          "Targets Rear Delts: Specifically isolates the posterior deltoids, helping to improve shoulder balance and posture."),
       list(
-          "Builds Arm Strength: Effective for building size and strength in the triceps."),
+          "Engages Upper Back Muscles: Also activates the rhomboids, traps, and other upper back muscles."),
       list(
-          "Complements Other Presses: Enhances performance in compound pressing movements like the bench press."),
+          "Enhances Shoulder Health: Helps prevent shoulder injuries by strengthening often neglected muscles."),
     ],
   );
 }
@@ -146,15 +155,13 @@ Widget safetyTips() {
     children: [
       title("Safety Tips"),
       list(
-          "Proper Form: Keep your upper arms stationary throughout the exercise to ensure the triceps do the work. Avoid flaring your elbows out to the sides."),
+          "Proper Form: Maintain a slight bend in your elbows throughout the exercise to protect your joints. Avoid swinging or using momentum."),
       list(
           "Controlled Movement: Perform the exercise in a slow and controlled manner to maximize muscle engagement and prevent injury."),
       list(
           "Warm-Up: Ensure proper warm-up to prepare the muscles and joints for the exercise."),
       list(
-          "Avoid Overextension: Do not let the weight go too far back, which can place excessive strain on the elbows and shoulders."),
-      list(
-          "Spotter: Consider having a spotter, especially when using heavier weights, to assist if you struggle to lift the bar back up."),
+          "Avoid Overarching: Keep your back straight and avoid arching your lower back to maintain proper form."),
     ],
   );
 }

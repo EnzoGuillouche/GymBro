@@ -1,6 +1,6 @@
+import 'package:GymBro/routes.dart';
 import 'package:flutter/material.dart';
 import 'exercise.dart';
-import 'package:go_router/go_router.dart';
 
 class ShouldersProgram extends StatefulWidget {
   const ShouldersProgram({super.key});
@@ -10,15 +10,38 @@ class ShouldersProgram extends StatefulWidget {
 }
 
 class _ShouldersProgramState extends State<ShouldersProgram> {
+  int _selectedIndex = 3;
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        body: GestureDetector(
-          onTap: () {
-            context.go("/");
-          },
-          child: Text("Shoulders"),
+        appBar: AppBar(
+          backgroundColor: Colors.amber,
+          title: const Text(
+            "Shoulders  -  Exercises",
+            style: TextStyle(
+              color: Colors.black,
+              fontSize: 20,
+            ),
+          ),
+        ),
+        body: Row(
+          children: [
+            Dashboard(_selectedIndex),
+            SingleChildScrollView(
+              child: Center(
+                child: Column(
+                  children: [
+                    exerciseContainer(
+                        context, "Shoulder Press", "/shoulderpress"),
+                    exerciseContainer(
+                        context, "Rear Delt", "/reardelt"),
+                  ],
+                ),
+              ),
+            ),
+          ],
         ),
       ),
     );

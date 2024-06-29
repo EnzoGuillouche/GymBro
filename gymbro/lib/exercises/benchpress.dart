@@ -47,15 +47,15 @@ class _BenchPressState extends State<BenchPress> {
                   Column(
                     children: [
                       title("Working weight"),
-                      PR("BenchBar"),
-                      PR("BenchDumbbell"),
+                      PR("Bench Bar"),
+                      PR("Bench Dumbbell"),
                     ],
                   ),
                   Column(
                     children: [
                       title("PRs:"),
-                      PR("BenchBarPR"),
-                      PR("BenchDumbbellPR"),
+                      PR("Bench Bar PR"),
+                      PR("Bench Dumbbell PR"),
                     ],
                   ),
                   description(),
@@ -83,31 +83,6 @@ class _BenchPressState extends State<BenchPress> {
       ),
     ));
   }
-}
-
-Widget title(String title) {
-  return Padding(
-    padding: const EdgeInsets.all(25),
-    child: Text(
-      title,
-      style: const TextStyle(
-        fontSize: 25,
-        fontWeight: FontWeight.bold,
-      ),
-    ),
-  );
-}
-
-Widget list(String list) {
-  return Padding(
-    padding: const EdgeInsets.all(10),
-    child: Text(
-      list,
-      style: const TextStyle(
-        fontSize: 18,
-      ),
-    ),
-  );
 }
 
 Widget description() {

@@ -54,8 +54,8 @@ class _PecFlyState extends State<PecFly> {
                   Column(
                     children: [
                       title("PRs:"),
-                      PR("ButterflyPulleyPR"),
-                      PR("ButterflyMachinePR"),
+                      PR("Butterfly Pulley PR"),
+                      PR("Butterfly Machine PR"),
                     ],
                   ),
                   description(),
@@ -83,31 +83,6 @@ class _PecFlyState extends State<PecFly> {
       ),
     ));
   }
-}
-
-Widget title(String title) {
-  return Padding(
-    padding: const EdgeInsets.all(25),
-    child: Text(
-      title,
-      style: const TextStyle(
-        fontSize: 25,
-        fontWeight: FontWeight.bold,
-      ),
-    ),
-  );
-}
-
-Widget list(String list) {
-  return Padding(
-    padding: const EdgeInsets.all(10),
-    child: Text(
-      list,
-      style: const TextStyle(
-        fontSize: 18,
-      ),
-    ),
-  );
 }
 
 Widget description() {
