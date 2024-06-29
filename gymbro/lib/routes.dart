@@ -6,7 +6,6 @@ import 'programs/biceps.dart';
 import 'programs/triceps.dart';
 import 'programs/back.dart';
 import 'programs/shoulders.dart';
-import 'programs/cardio.dart';
 import 'programs/abs.dart';
 import 'programs/legs.dart';
 import 'exercises/benchpress.dart';
@@ -57,12 +56,6 @@ final routes = GoRouter(
       name: "ShouldersProgram",
       builder: (BuildContext context, GoRouterState state) =>
           const ShouldersProgram(),
-    ),
-    GoRoute(
-      path: "/cardio",
-      name: "CardioProgram",
-      builder: (BuildContext context, GoRouterState state) =>
-          const CardioProgram(),
     ),
     GoRoute(
       path: "/abs",
@@ -149,8 +142,6 @@ String getRoute(int index) {
       return "/abs";
     case 7:
       return "/legs";
-    case 8:
-      return "/cardio";
     default:
       return "/";
   }
@@ -209,10 +200,6 @@ class _DashboardState extends State<Dashboard> {
         NavigationRailDestination(
           icon: ImageIcon(AssetImage("assets/quads_icon.png")),
           label: Text('Legs'),
-        ),
-        NavigationRailDestination(
-          icon: ImageIcon(AssetImage("assets/cardio_icon.png")),
-          label: Text('Cardio'),
         ),
       ],
     );
