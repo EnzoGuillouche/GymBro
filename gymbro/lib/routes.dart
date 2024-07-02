@@ -17,6 +17,9 @@ import 'exercises/skullcrusher.dart';
 import 'exercises/tricepsextpulley.dart';
 import 'exercises/shoulderpress.dart';
 import 'exercises/reardelt.dart';
+import 'exercises/inclinecurl.dart';
+import 'exercises/hammercurl.dart';
+import 'exercises/spidercurl.dart';
 
 final routes = GoRouter(
   initialLocation: "/",
@@ -120,6 +123,21 @@ final routes = GoRouter(
       name: "Rear Delt",
       builder: (BuildContext context, GoRouterState state) =>
           const RearDelt(),
+    ),
+    GoRoute(
+      path: "/inclinecurl",
+      name: "Incline Curl",
+      builder: (BuildContext context, GoRouterState state) => const InclineCurl(),
+    ),
+    GoRoute(
+      path: "/hammercurl",
+      name: "Hammer Curl",
+      builder: (BuildContext context, GoRouterState state) => const HammerCurl(),
+    ),
+    GoRoute(
+      path: "/spidercurl",
+      name: "Spider Curl",
+      builder: (BuildContext context, GoRouterState state) => const SpiderCurl(),
     ),
   ],
 );
