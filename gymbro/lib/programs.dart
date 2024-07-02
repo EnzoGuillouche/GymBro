@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:GymBro/preferences.dart';
+import 'package:GymBro/notif.dart';
 import 'package:GymBro/routes.dart';
 import 'package:GymBro/schedule.dart';
 import 'package:GymBro/timer.dart';
@@ -13,6 +15,16 @@ class ProgramsChoose extends StatefulWidget {
 
 class _ProgramsChooseState extends State<ProgramsChoose> {
   int _selectedIndex = 0;
+
+  @override
+  void initState() {
+    super.initState();
+    initializeNotifications();
+
+    if (isPrWeek()) {
+      showNotification();
+    }
+  }
 
   @override
   Widget build(BuildContext context) {

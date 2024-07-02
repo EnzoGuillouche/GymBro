@@ -1,7 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 var date = DateTime.now();
+
+bool isPrWeek() {
+  bool result = int.parse(DateFormat('d').format(date)) <= 7;
+  debugPrint("isPrWeek: $result");
+  return result;
+}
 
 saveValue(String key, String value) async {
   final SharedPreferences prefs = await SharedPreferences.getInstance();
@@ -161,4 +168,3 @@ bool isNumeric(String? s) {
   }
   return double.tryParse(s) != null;
 }
-
