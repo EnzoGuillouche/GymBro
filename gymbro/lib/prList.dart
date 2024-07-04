@@ -29,7 +29,7 @@ class _PrlistState extends State<Prlist> {
             ),
           ),
           PR("Bench Bar PR"),
-          PR("Inclined Bar PR"),
+          PR("Deadlift PR"),
           PR("Dips PR"),
         ],
       ),

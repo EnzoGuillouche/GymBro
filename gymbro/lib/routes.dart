@@ -20,6 +20,9 @@ import 'exercises/reardelt.dart';
 import 'exercises/inclinecurl.dart';
 import 'exercises/hammercurl.dart';
 import 'exercises/spidercurl.dart';
+import 'package:GymBro/exercises/pullups.dart';
+import 'package:GymBro/exercises/seatedrow.dart';
+import 'package:GymBro/exercises/deadlift.dart';
 
 final routes = GoRouter(
   initialLocation: "/",
@@ -138,6 +141,22 @@ final routes = GoRouter(
       path: "/spidercurl",
       name: "Spider Curl",
       builder: (BuildContext context, GoRouterState state) => const SpiderCurl(),
+    ),
+    GoRoute(
+      path: "/pullups",
+      name: "Pull-ups",
+      builder: (BuildContext context, GoRouterState state) =>
+          const PullUps(),
+    ),
+    GoRoute(
+      path: "/seatedrow",
+      name: "Seated Row",
+      builder: (BuildContext context, GoRouterState state) => const SeatedRow(),
+    ),
+    GoRoute(
+      path: "/deadlift",
+      name: "Deadlift",
+      builder: (BuildContext context, GoRouterState state) => const DeadLift(),
     ),
   ],
 );
